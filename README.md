@@ -40,10 +40,10 @@ After installing BepInEx and unzipping the file into your folder:
 - If they ever want to host the game, Make sure they installed the saveSharing.dll into their BepInEx.
 - When the host leaves the game, so will the rest of the players, make sure to agree who will host next and re-invite like normally.
 
-- Make sure to check if nobody is already hosting the game before starting the save file as host to prevent conflicts, if you accidentialy did host it while someone was already doing so, alt+f4 to kill the game, or simply kill your BepInEx window, and ask for an invite instead.
+- Make sure to check if nobody is already hosting the game before starting the save file as host to prevent conflicts, if you accidentally  did host it while someone was already doing so, alt+f4 to kill the game, or simply kill your BepInEx window, and ask for an invite instead.
 
 
 Special Thanks to
 @Akarnokd for the great code examples,
 @Nicki0 for helping me test and giving advice.
-The Planet Crafter wiki contributers for the great guides on modding the game.
+The Planet Crafter wiki contributors  for the great guides on modding the game.
