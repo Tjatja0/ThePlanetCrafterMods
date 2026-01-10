@@ -1,7 +1,7 @@
-Tested on:
+# Tested on:
 V1.614
 
-Preparation:
+# Preparation:
 You will need to install BepInEx first. The wiki has a guide for this:
 
 https://planet-crafter.fandom.com/wiki/Modding#Installation
@@ -20,7 +20,7 @@ The new Unity version the game uses has a feature/bug that prevents all mods fro
 
 HideManagerGameObject = true
 
-How to setup:
+# How to setup:
 
 After installing BepInEx and unzipping the file into your folder:
 run the game.
@@ -35,7 +35,7 @@ When connecting to the page it should result in an upload error.
 
 Run the game. 
 
-When inviting friends:
+# When inviting friends:
 
 -Invite them like you normally would through Steam/GoG.
 -If they ever want to host the game, Make sure they installed the saveSharing.dll into their BepInEx.
