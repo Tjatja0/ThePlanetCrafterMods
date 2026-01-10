@@ -23,16 +23,16 @@ HideManagerGameObject = true
 # How to setup:
 
 After installing BepInEx and unzipping the file into your folder:
-run the game.
-exit the game.
-Find BepInEx\config\Tjatja.theplanetcraftermods.savesharing.cfg
-make sure that Enabled = true
-set IPForConnection to the IP or URL of your server host.
-rename your save file of choice to Server-1.txt.
-upload "upload.php" and "Server-1.txt" to the server.
-Check if you can reach http://IPForConnection/upload.php after doing so.
-When connecting to the page it should result in an upload error.
-Run the game. 
+- run the game.
+- exit the game.
+- Find BepInEx\config\Tjatja.theplanetcraftermods.savesharing.cfg
+- make sure that Enabled = true
+- set IPForConnection to the IP or URL of your server host.
+- rename your save file of choice to Server-1.txt.
+- upload "upload.php" and "Server-1.txt" to the server.
+- Check if you can reach http://IPForConnection/upload.php after doing so.
+- When connecting to the page it should result in an upload error.
+- Run the game. 
 
 # When inviting friends:
 
