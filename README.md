@@ -32,7 +32,6 @@ rename your save file of choice to Server-1.txt.
 upload "upload.php" and "Server-1.txt" to the server.
 Check if you can reach http://IPForConnection/upload.php after doing so.
 When connecting to the page it should result in an upload error.
-
 Run the game. 
 
 # When inviting friends:
