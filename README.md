@@ -44,7 +44,7 @@ After installing BepInEx and unzipping the file into your folder:
 
 # When setting up a server:
 
-- do make sure to install the PHP service from Apache if you do end up using Wamp or Xampp.
+- do make sure to install the PHP service from Apache if you end up using Wamp or Xampp.
 
   Windows based tutorial:
   https://www.geeksforgeeks.org/websites-apps/how-to-use-apache-webserver-to-host-a-website/
