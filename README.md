@@ -43,16 +43,17 @@ After installing BepInEx and unzipping the file into your folder:
 - Make sure to check if nobody is already hosting the game before starting the save file as host to prevent conflicts, if you accidentally  did host it while someone was already doing so, alt+f4 to kill the game, or simply kill your BepInEx window, and ask for an invite instead.
 
 # When setting up a server:
-You could use a service like Wamp or Xampp on a windows server or look at this tutorial from geeks for geeks on how to setup apache.
-
-- https://www.geeksforgeeks.org/websites-apps/how-to-use-apache-webserver-to-host-a-website/
-
-if you do not have a webserver, you could also install Wamp or Xampp locally, and open the IP to others in your network or use a service like hamachi. 
-(hamachi enables several users in a group to connect to eachother localhost) 
 
 - do make sure to install the PHP service from Apache if you do end up using Wamp or Xampp.
 
-  there are ofcourse alternative methods to setting up a server, and technically a linux server could suffice, as long as you install everything so it can run a PHP based website.
+  Windows based tutorial:
+  https://www.geeksforgeeks.org/websites-apps/how-to-use-apache-webserver-to-host-a-website/
+
+  Localhost tutorial:
+  https://www.wikihow.com/Install-and-Configure-Apache-Webserver-to-Host-a-Website-from-Your-Computer
+
+  Ubuntu based tutorial:
+  https://www.digitalocean.com/community/tutorials/how-to-configure-the-apache-web-server-on-an-ubuntu-or-debian-vps
 
 Special Thanks to
 @Akarnokd for the great code examples,
