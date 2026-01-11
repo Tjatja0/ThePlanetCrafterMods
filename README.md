@@ -37,7 +37,7 @@ After installing BepInEx and unzipping the file into your folder:
 # When inviting friends:
 
 - Invite them like you normally would through Steam/GoG.
-- If they ever want to host the game, Make sure they installed the saveSharing.dll into their BepInEx.
+- If they ever want to host the game, Make sure they installed the saveSharing.dll into their BepInEx, and they set the IPForConnection.
 - When the host leaves the game, so will the rest of the players, make sure to agree who will host next and re-invite like normally.
 
 - Make sure to check if nobody is already hosting the game before starting the save file as host to prevent conflicts, if you accidentally  did host it while someone was already doing so, alt+f4 to kill the game, or simply kill your BepInEx window, and ask for an invite instead.
