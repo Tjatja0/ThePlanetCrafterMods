@@ -42,6 +42,8 @@ After installing BepInEx and unzipping the file into your folder:
 
 - Make sure to check if nobody is already hosting the game before starting the save file as host to prevent conflicts, if you accidentally  did host it while someone was already doing so, alt+f4 to kill the game, or simply kill your BepInEx window, and ask for an invite instead.
 
+- Make sure to disable the mod when you are planning to play a different game, as it will patch the online save file.
+
 # When setting up a server:
 
 - do make sure to install the PHP service from Apache if you end up using Wamp or Xampp.
