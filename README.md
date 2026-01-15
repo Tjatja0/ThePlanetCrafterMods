@@ -1,5 +1,6 @@
 # Tested on:
 V1.614
+V1.617
 
 # Preparation:
 You will need to install BepInEx first. The wiki has a guide for this:
