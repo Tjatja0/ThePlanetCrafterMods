@@ -1,4 +1,4 @@
-# Preparation:
+## Preparation:
 You will need to install BepInEx first. The wiki has a guide for this:
 
 https://planet-crafter.fandom.com/wiki/Modding#Installation
@@ -17,7 +17,7 @@ The new Unity version the game uses has a feature/bug that prevents all mods fro
 
 HideManagerGameObject = true
 
-# Save Sharing Mod Section:
+## Save Sharing Mod Section:
 
 # Tested on:
 V1.614
@@ -62,7 +62,7 @@ After installing BepInEx and unzipping the file into your folder:
   https://www.digitalocean.com/community/tutorials/how-to-configure-the-apache-web-server-on-an-ubuntu-or-debian-vps
 
 
-# Auto Name Storage / Auto Set Demand
+## Auto Name Storage / Auto Set Demand
 
 Tested on:
 V1.617
