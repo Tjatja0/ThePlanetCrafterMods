@@ -1,8 +1,3 @@
-# Tested on:
-V1.614
-
-V1.617
-
 # Preparation:
 You will need to install BepInEx first. The wiki has a guide for this:
 
@@ -21,6 +16,13 @@ Such organization avoids overwriting each others' files if they happen to be nam
 The new Unity version the game uses has a feature/bug that prevents all mods from running beyond their initialization phase. To work around it, find the BepInEx\config\BepInEx.cfg file, and in it, set
 
 HideManagerGameObject = true
+
+# Save Sharing Mod Section:
+
+# Tested on:
+V1.614
+
+V1.617
 
 # How to setup:
 
@@ -59,7 +61,25 @@ After installing BepInEx and unzipping the file into your folder:
   Ubuntu based tutorial:
   https://www.digitalocean.com/community/tutorials/how-to-configure-the-apache-web-server-on-an-ubuntu-or-debian-vps
 
-Special Thanks to
+
+# Auto Name Storage / Auto Set Demand
+
+Tested on:
+V1.617
+
+How to setup:
+
+After installing BepInEx and unzipping the file into your folder:
+- run the game.
+
+For additional options:
+- Find BepInEx\config\Tjatja.theplanetcraftermods.AutoNameStorage.cfg
+- Set the variables
+
+
+# Special Thanks to
 @Akarnokd for the great code examples,
 @Nicki0 for helping me test and giving advice.
-The Planet Crafter wiki contributors  for the great guides on modding the game.
+The Planet Crafter wiki contributors for the great guides on modding the game.
+
+
