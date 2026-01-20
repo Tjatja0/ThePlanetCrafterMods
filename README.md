@@ -1,4 +1,4 @@
-## Preparation:
+# Preparation:
 You will need to install BepInEx first. The wiki has a guide for this:
 
 https://planet-crafter.fandom.com/wiki/Modding#Installation
@@ -17,14 +17,14 @@ The new Unity version the game uses has a feature/bug that prevents all mods fro
 
 HideManagerGameObject = true
 
-## Save Sharing Mod Section:
+# Save Sharing Mod Section:
 
-# Tested on:
+## Tested on:
 V1.614
 
 V1.617
 
-# How to setup:
+## How to setup:
 
 After installing BepInEx and unzipping the file into your folder:
 - run the game.
@@ -38,7 +38,7 @@ After installing BepInEx and unzipping the file into your folder:
 - When connecting to the page it should result in an upload error.
 - Run the game. 
 
-# When inviting friends:
+## When inviting friends:
 
 - Invite them like you normally would through Steam/GoG.
 - If they ever want to host the game, Make sure they installed the saveSharing.dll into their BepInEx, and they set the IPForConnection.
@@ -48,7 +48,7 @@ After installing BepInEx and unzipping the file into your folder:
 
 - Make sure to disable the mod (Enabled = false) when you are planning to play a different save, as it will patch the online save file.
 
-# When setting up a server:
+## When setting up a server:
 
 - do make sure to install the PHP service from Apache if you end up using Wamp or Xampp.
 
@@ -62,7 +62,7 @@ After installing BepInEx and unzipping the file into your folder:
   https://www.digitalocean.com/community/tutorials/how-to-configure-the-apache-web-server-on-an-ubuntu-or-debian-vps
 
 
-## Auto Name Storage / Auto Set Demand
+# Auto Name Storage / Auto Set Demand
 
 Tested on:
 V1.617
