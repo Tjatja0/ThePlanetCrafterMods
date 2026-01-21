@@ -1,4 +1,4 @@
-﻿using BepInEx;
+using BepInEx;
 using BepInEx.Configuration;
 using SpaceCraft;
 using HarmonyLib;
@@ -16,8 +16,9 @@ using System.Linq;
 using UnityEngine.Networking;
 using static UnityEngine.InputForUI.InputManagerProvider;
 using System.Collections.Generic;
+using ModVersionCheck;
 
-namespace MyModNameHere
+namespace SaveSharing
 {
     [BepInPlugin("Tjatja.theplanetcraftermods.savesharing", PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
     public class Plugin : BaseUnityPlugin
@@ -29,6 +30,11 @@ namespace MyModNameHere
 
         private void Awake()
         {
+            if (ModVersionCheck.ModVersionCheck.Check(this, Logger.LogInfo))
+            {
+                ModVersionCheck.ModVersionCheck.NotifyUser(this, Logger.LogInfo);
+                // return; // skip the mod, it might fail anyways
+            }
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
             modEnabled = Config.Bind("General", "Enabled", true, "Is the mod enabled?");
             ipAdress = Config.Bind("General", "IPForConnection", "Localhost", "The IP address to connect to.");
