@@ -1,4 +1,4 @@
-﻿using BepInEx;
+using BepInEx;
 using BepInEx.Configuration;
 using SpaceCraft;
 using HarmonyLib;
@@ -13,6 +13,7 @@ using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Net;
+using System.Runtime.InteropServices;
 
 namespace AutoNameStorage
 {
@@ -22,6 +23,8 @@ namespace AutoNameStorage
         static ConfigEntry<bool> modEnabled;
         static ConfigEntry<bool> setNameToFirstObjectStored;
         static ConfigEntry<bool> setDemandToFirstObjectStored;
+        static ConfigEntry<bool> resetStorageNameToNull;
+        static ConfigEntry<bool> resetStorageDemandToNull;
         static ConfigEntry<String> exclusion;
         static ManualLogSource logger;
         static WorldObjectText woText = null;
@@ -31,11 +34,18 @@ namespace AutoNameStorage
 
         private void Awake()
         {
+            if (ModVersionCheck.ModVersionCheck.Check(this, Logger.LogInfo))
+            {
+                ModVersionCheck.ModVersionCheck.NotifyUser(this, Logger.LogInfo);
+                // return; // skip the mod, it might fail anyways
+            }
             // Plugin startup logic
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
             modEnabled = Config.Bind("General", "Enabled", true, "Is the mod enabled?");
             setNameToFirstObjectStored = Config.Bind("General", "SetStorageName", true, "Set the storage name on storing the first item?");
             setDemandToFirstObjectStored = Config.Bind("General", "SetDemand", true, "Set the storage demand on storing the first item?");
+            resetStorageNameToNull = Config.Bind("General", "ResetName", true, "Set the storage name to ... when the last item is removed?");
+            resetStorageDemandToNull = Config.Bind("General", "ResetDemand", true, "Set the storage demand to nothing when the last item is removed?");
             exclusion = Config.Bind("General", "exclusion", "Supply", "Containers containing a name like this will be excluded.");
             logger = Logger;
             mActionableHandleHoverMaterial = AccessTools.Method(typeof(Actionnable), "HandleHoverMaterial", [typeof(bool)]);
@@ -44,8 +54,8 @@ namespace AutoNameStorage
             {
                 Harmony.CreateAndPatchAll(typeof(Plugin));
             }
-        }
 
+        }
         [HarmonyPostfix]
         [HarmonyPatch(typeof(InventoryDisplayer), "OnImageClicked")]
         static void InventoryDisplayer_OnImageClicked(EventTriggerCallbackData eventTriggerCallbackData, Inventory ____inventory)
@@ -62,6 +72,27 @@ namespace AutoNameStorage
                         int count = 0;
                         String name = "";
                         WorldObject temp = null;
+                        if (____inventory.IsEmpty())
+                        {
+                            logger.LogDebug("Empty Inventory");
+                            if (resetStorageNameToNull.Value)
+                            {
+                                if (woText.GetText() != null && !woText.GetText().Contains("" + exclusion.Value))
+                                {
+                                    woText.SetText("...");
+                                    logger.LogDebug("Reset Text");
+                                }
+
+                            }
+                            if (resetStorageDemandToNull.Value)
+                            {
+                                if (woText.GetText() != null && !woText.GetText().Contains("" + exclusion.Value))
+                                {
+                                    ____inventory.GetLogisticEntity().ClearDemandGroups();
+                                    logger.LogDebug("Reset Demand groups");
+                                }
+                            }
+                        }
                         foreach (WorldObject worldObject in otherInventory.GetInsideWorldObjects())
                         {
                             if (count == 0)
@@ -72,12 +103,13 @@ namespace AutoNameStorage
                             }
                             count++;
                         }
-                        if ((count == 0 || count == 1) && temp != null)
+
+                        if (!otherInventory.IsEmpty() && count < 2 && temp != null)
                         {
 
                             if (setDemandToFirstObjectStored.Value)
                             {
-                                if (woText.GetText() != null && !woText.GetText().Contains(""+exclusion))
+                                if (woText.GetText() != null && !woText.GetText().Contains("" + exclusion.Value))
                                 {
                                     otherInventory.GetLogisticEntity().ClearDemandGroups();
                                     //otherInventory.GetLogisticEntity().ClearSupplyGroups();
@@ -91,7 +123,7 @@ namespace AutoNameStorage
                             }
                             if (setNameToFirstObjectStored.Value)
                             {
-                                if (woText.GetText() != null && !woText.GetText().Contains("" + exclusion))
+                                if (woText.GetText() != null && !woText.GetText().Contains("" + exclusion.Value))
                                 {
                                     woText.SetText(name);
                                     logger.LogDebug("Set Text to : " + name);
@@ -111,4 +143,6 @@ namespace AutoNameStorage
             woText = __instance.GetComponent<WorldObjectText>();
         }
     }
+
+
 }
