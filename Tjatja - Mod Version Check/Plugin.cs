@@ -1,4 +1,6 @@
-﻿using BepInEx;
+//sourced from https://github.com/akarnokd/ThePlanetCrafterMods/blob/main/CheatAutoStore/Plugin.cs //
+
+using BepInEx;
 using HarmonyLib;
 using MonoMod.Utils;
 using Newtonsoft.Json;
@@ -361,3 +363,4 @@ namespace ModVersionCheck
         }
     }
 }
+
