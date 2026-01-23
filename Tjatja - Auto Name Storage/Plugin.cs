@@ -37,9 +37,7 @@ namespace AutoNameStorage
             if (ModVersionCheck.ModVersionCheck.Check(this, Logger.LogInfo))
             {
                 ModVersionCheck.ModVersionCheck.NotifyUser(this, Logger.LogInfo);
-                // return; // skip the mod, it might fail anyways
             }
-            // Plugin startup logic
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
             modEnabled = Config.Bind("General", "Enabled", true, "Is the mod enabled?");
             setNameToFirstObjectStored = Config.Bind("General", "SetStorageName", true, "Set the storage name on storing the first item?");
@@ -58,10 +56,9 @@ namespace AutoNameStorage
         }
         [HarmonyPostfix]
         [HarmonyPatch(typeof(InventoryDisplayer), "OnImageClicked")]
+        [HarmonyPatch(typeof(InventoryDisplayer), "OnActionViaGamepad")]
         static void InventoryDisplayer_OnImageClicked(EventTriggerCallbackData eventTriggerCallbackData, Inventory ____inventory)
         {
-            if (eventTriggerCallbackData.pointerEventData.button == PointerEventData.InputButton.Left)
-            {
                 DataConfig.UiType CurrentUI = Managers.GetManager<WindowsHandler>().GetOpenedUi();
 
                 if (CurrentUI == DataConfig.UiType.Container || CurrentUI == DataConfig.UiType.GroupSelector)
@@ -80,6 +77,7 @@ namespace AutoNameStorage
                                 if (woText.GetText() != null && !woText.GetText().Contains("" + exclusion.Value))
                                 {
                                     woText.SetText("...");
+                                    ((UiWindowContainer)Managers.GetManager<WindowsHandler>().GetWindowViaUiId(CurrentUI)).SetContainerName("...");
                                     logger.LogDebug("Reset Text");
                                 }
 
@@ -112,10 +110,7 @@ namespace AutoNameStorage
                                 if (woText.GetText() != null && !woText.GetText().Contains("" + exclusion.Value))
                                 {
                                     otherInventory.GetLogisticEntity().ClearDemandGroups();
-                                    //otherInventory.GetLogisticEntity().ClearSupplyGroups();
-                                    //HashSet<Group> newgroup = otherInventory.GetLogisticEntity().GetDemandGroups();
                                     otherInventory.GetLogisticEntity().AddDemandGroup(temp.GetGroup());
-                                    //otherInventory.GetLogisticEntity().SetDemandGroups(newgroup);
                                     logger.LogDebug("Set Demand to : " + name);
                                 }
                                 //SetDemandOfContainer
@@ -126,21 +121,22 @@ namespace AutoNameStorage
                                 if (woText.GetText() != null && !woText.GetText().Contains("" + exclusion.Value))
                                 {
                                     woText.SetText(name);
+                                    ((UiWindowContainer)Managers.GetManager<WindowsHandler>().GetWindowViaUiId(CurrentUI)).SetContainerName(name);
                                     logger.LogDebug("Set Text to : " + name);
                                 }
-                                //setNameOfContainer
 
                             }
                         }
                     }
                 }
-            }
+            //}  
         }
         [HarmonyPrefix]
         [HarmonyPatch(typeof(ActionOpenable), nameof(ActionOpenable.OnHover))]
         static void ActionOpenable_OnHover(ActionOpenable __instance, BaseHudHandler ____hudHandler)
         {
             woText = __instance.GetComponent<WorldObjectText>();
+
         }
     }
 
