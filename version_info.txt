@@ -1,4 +1,4 @@
 # Save Sharing
 Tjatja.theplanetcraftermods.savesharing=1.0.2
 # Auto Name Storage (/Auto enable demand)
-Tjatja.theplanetcraftermods.autonamestorage=1.0.1
+Tjatja.theplanetcraftermods.autonamestorage=1.0.2
