@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Net;
 using System.Runtime.InteropServices;
+using UnityEngine.InputSystem;
 
 namespace AutoNameStorage
 {
@@ -54,82 +55,143 @@ namespace AutoNameStorage
             }
 
         }
+
+        [HarmonyPrefix]
+        [HarmonyPatch(typeof(InventoriesHandler), "TransferAllSameGroup")]
+        static void InventoriesHandler_TransferAllSameGroup_patch(Inventory fromInventory, Inventory toInventory, Group group)
+        {
+            DataConfig.UiType CurrentUI = Managers.GetManager<WindowsHandler>().GetOpenedUi();
+            if (CurrentUI == DataConfig.UiType.Container || CurrentUI == DataConfig.UiType.GroupSelector)
+            {
+                if (toInventory != null && fromInventory != null)
+                {
+                    if (fromInventory.IsEmpty())
+                    {
+                        logger.LogDebug("Empty Inventory");
+                        if (resetStorageNameToNull.Value)
+                        {
+                            if (woText.GetText() != null && !woText.GetText().Contains("" + exclusion.Value))
+                            {
+                                woText.SetText("...");
+                                ((UiWindowContainer)Managers.GetManager<WindowsHandler>().GetWindowViaUiId(CurrentUI)).SetContainerName("...");
+                                logger.LogDebug("Reset Text");
+                            }
+
+                        }
+                        if (resetStorageDemandToNull.Value)
+                        {
+                            if (woText.GetText() != null && !woText.GetText().Contains("" + exclusion.Value))
+                            {
+                                fromInventory.GetLogisticEntity().ClearDemandGroups();
+                                logger.LogDebug("Reset Demand groups");
+                            }
+                        }
+                    }
+                    if (toInventory.IsEmpty())
+                    {
+
+                        if (setDemandToFirstObjectStored.Value)
+                        {
+                            if (woText.GetText() != null && !woText.GetText().Contains("" + exclusion.Value))
+                            {
+                                toInventory.GetLogisticEntity().ClearDemandGroups();
+                                toInventory.GetLogisticEntity().AddDemandGroup(group);
+                                logger.LogDebug("Set Demand to : " + Readable.GetGroupName(group));
+                            }
+
+                        }
+                        if (setNameToFirstObjectStored.Value)
+                        {
+                            if (woText.GetText() != null && !woText.GetText().Contains("" + exclusion.Value))
+                            {
+                                woText.SetText(Readable.GetGroupName(group));
+                                ((UiWindowContainer)Managers.GetManager<WindowsHandler>().GetWindowViaUiId(CurrentUI)).SetContainerName(Readable.GetGroupName(group));
+                                logger.LogDebug("Set Text to : " + Readable.GetGroupName(group));
+                            }
+
+                        }
+                    }
+
+
+                }
+            }
+        }
+        
         [HarmonyPostfix]
         [HarmonyPatch(typeof(InventoryDisplayer), "OnImageClicked")]
         [HarmonyPatch(typeof(InventoryDisplayer), "OnActionViaGamepad")]
         static void InventoryDisplayer_OnImageClicked(EventTriggerCallbackData eventTriggerCallbackData, Inventory ____inventory)
         {
-                DataConfig.UiType CurrentUI = Managers.GetManager<WindowsHandler>().GetOpenedUi();
+            DataConfig.UiType CurrentUI = Managers.GetManager<WindowsHandler>().GetOpenedUi();
 
-                if (CurrentUI == DataConfig.UiType.Container || CurrentUI == DataConfig.UiType.GroupSelector)
+            if (CurrentUI == DataConfig.UiType.Container || CurrentUI == DataConfig.UiType.GroupSelector)
+            {
+                Inventory otherInventory = ((UiWindowContainer)Managers.GetManager<WindowsHandler>().GetWindowViaUiId(CurrentUI)).GetOtherInventory(____inventory);
+                if (____inventory != null && otherInventory != null)
                 {
-                    Inventory otherInventory = ((UiWindowContainer)Managers.GetManager<WindowsHandler>().GetWindowViaUiId(CurrentUI)).GetOtherInventory(____inventory);
-                    if (____inventory != null && otherInventory != null)
+                    int count = 0;
+                    String name = "";
+                    WorldObject temp = null;
+                    if (____inventory.IsEmpty())
                     {
-                        int count = 0;
-                        String name = "";
-                        WorldObject temp = null;
-                        if (____inventory.IsEmpty())
+                        logger.LogDebug("Empty Inventory");
+                        if (resetStorageNameToNull.Value)
                         {
-                            logger.LogDebug("Empty Inventory");
-                            if (resetStorageNameToNull.Value)
+                            if (woText.GetText() != null && !woText.GetText().Contains("" + exclusion.Value))
                             {
-                                if (woText.GetText() != null && !woText.GetText().Contains("" + exclusion.Value))
-                                {
-                                    woText.SetText("...");
-                                    ((UiWindowContainer)Managers.GetManager<WindowsHandler>().GetWindowViaUiId(CurrentUI)).SetContainerName("...");
-                                    logger.LogDebug("Reset Text");
-                                }
+                                woText.SetText("...");
+                                ((UiWindowContainer)Managers.GetManager<WindowsHandler>().GetWindowViaUiId(CurrentUI)).SetContainerName("...");
+                                logger.LogDebug("Reset Text");
+                            }
 
-                            }
-                            if (resetStorageDemandToNull.Value)
-                            {
-                                if (woText.GetText() != null && !woText.GetText().Contains("" + exclusion.Value))
-                                {
-                                    ____inventory.GetLogisticEntity().ClearDemandGroups();
-                                    logger.LogDebug("Reset Demand groups");
-                                }
-                            }
                         }
-                        foreach (WorldObject worldObject in otherInventory.GetInsideWorldObjects())
+                        if (resetStorageDemandToNull.Value)
                         {
-                            if (count == 0)
+                            if (woText.GetText() != null && !woText.GetText().Contains("" + exclusion.Value))
                             {
-                                name = Readable.GetGroupName(worldObject.GetGroup());
-                                temp = worldObject;
-
-                            }
-                            count++;
-                        }
-
-                        if (!otherInventory.IsEmpty() && count < 2 && temp != null)
-                        {
-
-                            if (setDemandToFirstObjectStored.Value)
-                            {
-                                if (woText.GetText() != null && !woText.GetText().Contains("" + exclusion.Value))
-                                {
-                                    otherInventory.GetLogisticEntity().ClearDemandGroups();
-                                    otherInventory.GetLogisticEntity().AddDemandGroup(temp.GetGroup());
-                                    logger.LogDebug("Set Demand to : " + name);
-                                }
-                                //SetDemandOfContainer
-
-                            }
-                            if (setNameToFirstObjectStored.Value)
-                            {
-                                if (woText.GetText() != null && !woText.GetText().Contains("" + exclusion.Value))
-                                {
-                                    woText.SetText(name);
-                                    ((UiWindowContainer)Managers.GetManager<WindowsHandler>().GetWindowViaUiId(CurrentUI)).SetContainerName(name);
-                                    logger.LogDebug("Set Text to : " + name);
-                                }
-
+                                ____inventory.GetLogisticEntity().ClearDemandGroups();
+                                logger.LogDebug("Reset Demand groups");
                             }
                         }
                     }
+                    foreach (WorldObject worldObject in otherInventory.GetInsideWorldObjects())
+                    {
+                        if (count == 0)
+                        {
+                            name = Readable.GetGroupName(worldObject.GetGroup());
+                            temp = worldObject;
+
+                        }
+                        count++;
+                    }
+
+                    if (!otherInventory.IsEmpty() && count < 2 && temp != null)
+                    {
+
+                        if (setDemandToFirstObjectStored.Value)
+                        {
+                            if (woText.GetText() != null && !woText.GetText().Contains("" + exclusion.Value))
+                            {
+                                otherInventory.GetLogisticEntity().ClearDemandGroups();
+                                otherInventory.GetLogisticEntity().AddDemandGroup(temp.GetGroup());
+                                logger.LogDebug("Set Demand to : " + name);
+                            }
+                            //SetDemandOfContainer
+
+                        }
+                        if (setNameToFirstObjectStored.Value)
+                        {
+                            if (woText.GetText() != null && !woText.GetText().Contains("" + exclusion.Value))
+                            {
+                                woText.SetText(name);
+                                ((UiWindowContainer)Managers.GetManager<WindowsHandler>().GetWindowViaUiId(CurrentUI)).SetContainerName(name);
+                                logger.LogDebug("Set Text to : " + name);
+                            }
+
+                        }
+                    }
                 }
-            //}  
+            }
         }
         [HarmonyPrefix]
         [HarmonyPatch(typeof(ActionOpenable), nameof(ActionOpenable.OnHover))]
