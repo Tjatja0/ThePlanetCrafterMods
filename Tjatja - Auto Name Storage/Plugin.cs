@@ -26,6 +26,7 @@ namespace AutoNameStorage
         static ConfigEntry<bool> setDemandToFirstObjectStored;
         static ConfigEntry<bool> resetStorageNameToNull;
         static ConfigEntry<bool> resetStorageDemandToNull;
+        static ConfigEntry<bool> addAsterisk;
         static ConfigEntry<String> exclusion;
         static ManualLogSource logger;
         static WorldObjectText woText = null;
@@ -45,6 +46,7 @@ namespace AutoNameStorage
             setDemandToFirstObjectStored = Config.Bind("General", "SetDemand", true, "Set the storage demand on storing the first item?");
             resetStorageNameToNull = Config.Bind("General", "ResetName", true, "Set the storage name to ... when the last item is removed?");
             resetStorageDemandToNull = Config.Bind("General", "ResetDemand", true, "Set the storage demand to nothing when the last item is removed?");
+            addAsterisk = Config.Bind("General", "AddAsterix", false, "adds an * in front of item names if set to true");
             exclusion = Config.Bind("General", "exclusion", "Supply", "Containers containing a name like this will be excluded.");
             logger = Logger;
             mActionableHandleHoverMaterial = AccessTools.Method(typeof(Actionnable), "HandleHoverMaterial", [typeof(bool)]);
@@ -104,9 +106,18 @@ namespace AutoNameStorage
                         {
                             if (woText.GetText() != null && !woText.GetText().Contains("" + exclusion.Value))
                             {
-                                woText.SetText(Readable.GetGroupName(group));
-                                ((UiWindowContainer)Managers.GetManager<WindowsHandler>().GetWindowViaUiId(CurrentUI)).SetContainerName(Readable.GetGroupName(group));
-                                logger.LogDebug("Set Text to : " + Readable.GetGroupName(group));
+                                if (addAsterisk.Value)
+                                {
+                                    woText.SetText($"*{Readable.GetGroupName(group)}");
+                                    ((UiWindowContainer)Managers.GetManager<WindowsHandler>().GetWindowViaUiId(CurrentUI)).SetContainerName(Readable.GetGroupName(group));
+                                    logger.LogDebug("Set Text to : *" + Readable.GetGroupName(group));
+                                }
+                                else
+                                {
+                                    woText.SetText(Readable.GetGroupName(group));
+                                    ((UiWindowContainer)Managers.GetManager<WindowsHandler>().GetWindowViaUiId(CurrentUI)).SetContainerName(Readable.GetGroupName(group));
+                                    logger.LogDebug("Set Text to : " + Readable.GetGroupName(group));
+                                }
                             }
 
                         }
@@ -183,9 +194,18 @@ namespace AutoNameStorage
                         {
                             if (woText.GetText() != null && !woText.GetText().Contains("" + exclusion.Value))
                             {
-                                woText.SetText(name);
-                                ((UiWindowContainer)Managers.GetManager<WindowsHandler>().GetWindowViaUiId(CurrentUI)).SetContainerName(name);
-                                logger.LogDebug("Set Text to : " + name);
+                                if (addAsterisk.Value)
+                                {
+                                    woText.SetText($"*{name}");
+                                    ((UiWindowContainer)Managers.GetManager<WindowsHandler>().GetWindowViaUiId(CurrentUI)).SetContainerName(name);
+                                    logger.LogDebug("Set Text to : *" + name);
+                                }
+                                else
+                                {
+                                    woText.SetText(name);
+                                    ((UiWindowContainer)Managers.GetManager<WindowsHandler>().GetWindowViaUiId(CurrentUI)).SetContainerName(name);
+                                    logger.LogDebug("Set Text to : " + name);
+                                }
                             }
 
                         }
