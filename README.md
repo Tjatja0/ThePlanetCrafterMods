@@ -23,6 +23,7 @@ HideManagerGameObject = true
 V1.614
 
 V1.617
+V1.618
 
 ## How to setup:
 
@@ -66,6 +67,7 @@ After installing BepInEx and unzipping the file into your folder:
 
 Tested on:
 V1.617
+V1.618
 
 How to setup:
 
@@ -75,7 +77,20 @@ After installing BepInEx and unzipping the file into your folder:
 For additional options:
 - Find BepInEx\config\Tjatja.theplanetcraftermods.AutoNameStorage.cfg
 - Set the variables
+- 
+# DirtBlocks / Dirt Blocks
 
+Tested on:
+V1.618
+
+How to setup:
+
+After installing BepInEx and unzipping the file into your folder:
+- run the game.
+
+For additional options:
+- Find BepInEx\config\Tjatja.theplanetcraftermods.DirtBlocks.cfg
+- Set the variables
 
 # Special Thanks to
 @Akarnokd for the great code examples,
