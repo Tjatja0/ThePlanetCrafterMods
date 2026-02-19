@@ -92,6 +92,28 @@ For additional options:
 - Find BepInEx\config\Tjatja.theplanetcraftermods.DirtBlocks.cfg
 - Set the variables
 
+DirtBlocks:
+- Take tree seeds in their inventory, and will grow a singular tree.
+- Allow flower spreaders to place grass/flowers on top of their surface.
+
+Spiral Stairs:
+- 2 living compartments stacked, with a neat spiral staircase.
+
+Elevator pod:
+- Trigger button on the moving platform.
+- Call buttons on both floors.
+
+Underground pod:
+- Has a built in ladder, and can be connected with other pods.
+- Try building a door if you accidentally disconnect pods underground
+- falling out of the map respawns you back on top somehow, so there is nothing to worry about if it happens.
+
+Roof Top Farm Pod:
+- Takes Food Seeds to grow plants.
+
+Usable Faucet:
+- Has a body of water in the sink, note that you need a water filter to drink from it.
+
 # Special Thanks to
 @Akarnokd for the great code examples,
 @Nicki0 for helping me test and giving advice.
