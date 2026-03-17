@@ -3,6 +3,10 @@ Tjatja.theplanetcraftermods.savesharing=1.0.2
 # Auto Name Storage (/Auto enable demand)
 Tjatja.theplanetcraftermods.autonamestorage=1.0.4
 # Dirt Blocks
-Tjatja.theplanetcraftermods.DirtBlocks=1.0.1
-# Dirt Blocks
-Tjatja.theplanetcraftermods.DecorBundle=1.0.1
+Tjatja.theplanetcraftermods.DirtBlocks=1.0.2
+# Decor Bundle
+Tjatja.theplanetcraftermods.DecorBundle=1.0.2
+# Carousel
+Tjatja.theplanetcraftermods.Carousel=1.0.1
+# Rocks
+Tjatja.theplanetcraftermods.Rocks=1.0.1
