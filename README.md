@@ -24,6 +24,7 @@ V1.614
 
 V1.617
 V1.618
+V2.007
 
 ## How to setup:
 
@@ -68,6 +69,7 @@ After installing BepInEx and unzipping the file into your folder:
 Tested on:
 V1.617
 V1.618
+V2.007
 
 How to setup:
 
@@ -82,6 +84,7 @@ For additional options:
 
 Tested on:
 V1.618
+V2.007
 
 How to setup:
 
