@@ -36,9 +36,9 @@ namespace AutoNameStorage
 
         private void Awake()
         {
-            if (ModVersionCheck.ModVersionCheck.Check(this, Logger.LogInfo))
+            if (ModVersionCheck.ModVersionCheck.Check(this, Logger.LogInfo, out bool hashError, out string repoURL))
             {
-                ModVersionCheck.ModVersionCheck.NotifyUser(this, Logger.LogInfo);
+                ModVersionCheck.ModVersionCheck.NotifyUser(this, hashError, repoURL, Logger.LogInfo);
             }
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
             modEnabled = Config.Bind("General", "Enabled", true, "Is the mod enabled?");
@@ -221,6 +221,4 @@ namespace AutoNameStorage
 
         }
     }
-
-
 }
