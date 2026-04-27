@@ -80,7 +80,7 @@ For additional options:
 - Find BepInEx\config\Tjatja.theplanetcraftermods.AutoNameStorage.cfg
 - Set the variables
 - 
-# DirtBlocks / Dirt Blocks
+# DirtBlocks / Rocks / Carousel / Decor Bundle
 
 Tested on:
 V1.618
@@ -116,6 +116,38 @@ Roof Top Farm Pod:
 
 Usable Faucet:
 - Has a body of water in the sink, note that you need a water filter to drink from it.
+
+Rocks:
+- Only have an aesthetic function nothing else.
+- Not meant to be thrown, stop it Nicki.
+
+Carousel:
+- Displays only Animal Effigies
+- Has 4 inventory slots
+- Seats are located slightly in front of the center-rod.
+
+Container Rack:
+- Hangs on a wall.
+- Contains 30 slots.
+
+Rocking Chair:
+- Is a chair, and it rocks when you sit down.
+- Possible to set the colour.
+
+Toilet:
+- Works like a chair
+
+Shower:
+- Has working water
+
+Rugs:
+- Possible to set the colour.
+
+Curtains:
+- Possible to set the colour.
+
+Equipment Rack
+- Shows up to 9 equip-able items
 
 # Special Thanks to
 @Akarnokd for the great code examples,
