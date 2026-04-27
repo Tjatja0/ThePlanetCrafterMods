@@ -20,11 +20,7 @@ HideManagerGameObject = true
 # Save Sharing Mod Section:
 
 ## Tested on:
-V1.614
-
-V1.617
-V1.618
-V2.007
+V1.614, V1.617, V1.618, V2.007,
 
 ## How to setup:
 
@@ -67,9 +63,7 @@ After installing BepInEx and unzipping the file into your folder:
 # Auto Name Storage / Auto Set Demand
 
 Tested on:
-V1.617
-V1.618
-V2.007
+V1.617, V1.618, V2.007,
 
 How to setup:
 
@@ -79,12 +73,11 @@ After installing BepInEx and unzipping the file into your folder:
 For additional options:
 - Find BepInEx\config\Tjatja.theplanetcraftermods.AutoNameStorage.cfg
 - Set the variables
-- 
+  
 # DirtBlocks / Rocks / Carousel / Decor Bundle
 
 Tested on:
-V1.618
-V2.007
+V1.618, V2.007
 
 How to setup:
 
