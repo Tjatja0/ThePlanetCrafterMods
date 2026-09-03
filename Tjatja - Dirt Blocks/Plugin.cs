@@ -245,82 +245,126 @@ namespace DirtBlocks
                 if (DirtBlocks.Value)
                 {
                     GroupDataConstructible cubeGDC = bundle.LoadAsset<GroupDataConstructible>("assets/FoundationDirtBlock.asset");
+                    if (___groupsData.Contains(cubeGDC))
+                    {
+                        return;
+                    }
                     MaterialsHelper.ApplyGameMaterials(cubeGDC.associatedGameObject);
                     ___groupsData.Add(cubeGDC);
+                    //networking code
                     uint newint = 204376311;
                     SetGlobalObjectIdHash(cubeGDC.associatedGameObject.GetComponent<NetworkObject>(), newint);
                     NetworkManager.Singleton.AddNetworkPrefab(cubeGDC.associatedGameObject);
+                    //networking code
                     GroupDataConstructible cubeGDC1 = bundle.LoadAsset<GroupDataConstructible>("assets/FoundationDirtBlockAngle.asset");
                     MaterialsHelper.ApplyGameMaterials(cubeGDC1.associatedGameObject);
                     ___groupsData.Add(cubeGDC1);
+                    //networking code
                     newint = 204376312;
                     SetGlobalObjectIdHash(cubeGDC1.associatedGameObject.GetComponent<NetworkObject>(), newint);
                     NetworkManager.Singleton.AddNetworkPrefab(cubeGDC1.associatedGameObject);
+                    //networking code
                     GroupDataConstructible cubeGDC2 = bundle.LoadAsset<GroupDataConstructible>("assets/FoundationDirtBlockSlope.asset");
                     MaterialsHelper.ApplyGameMaterials(cubeGDC2.associatedGameObject);
                     ___groupsData.Add(cubeGDC2);
+                    //networking code
                     newint = 204376313;
                     SetGlobalObjectIdHash(cubeGDC2.associatedGameObject.GetComponent<NetworkObject>(), newint);
                     NetworkManager.Singleton.AddNetworkPrefab(cubeGDC2.associatedGameObject);
+                    //networking code
                     GroupDataConstructible cubeGDC3 = bundle.LoadAsset<GroupDataConstructible>("assets/FoundationDirtBlockAngleSlope.asset");
                     MaterialsHelper.ApplyGameMaterials(cubeGDC3.associatedGameObject);
                     ___groupsData.Add(cubeGDC3);
+                    //networking code
                     newint = 204376314;
                     SetGlobalObjectIdHash(cubeGDC3.associatedGameObject.GetComponent<NetworkObject>(), newint);
                     NetworkManager.Singleton.AddNetworkPrefab(cubeGDC3.associatedGameObject);
+                    //networking code
                     GroupDataConstructible cubeGDC5 = bundle.LoadAsset<GroupDataConstructible>("assets/FoundationDirtBlockAngleSlopeConcave.asset");
                     MaterialsHelper.ApplyGameMaterials(cubeGDC5.associatedGameObject);
                     ___groupsData.Add(cubeGDC5);
+                    //networking code
                     newint = 204376315;
                     SetGlobalObjectIdHash(cubeGDC5.associatedGameObject.GetComponent<NetworkObject>(), newint);
                     NetworkManager.Singleton.AddNetworkPrefab(cubeGDC5.associatedGameObject);
+                    //networking code
                 }
 
                 if (ElevatorPod.Value)
                 {
                     GroupDataConstructible cubeGDC4 = bundle.LoadAsset<GroupDataConstructible>("assets/ElevatorPod.asset");
+                    if (___groupsData.Contains(cubeGDC4))
+                    {
+                        return;
+                    }
                     MaterialsHelper.ApplyGameMaterials(cubeGDC4.associatedGameObject);
                     cubeGDC4.associatedGameObject.transform.Find("Elevator").gameObject.AddComponent<Set_WorldUniqueId>();
                     ___groupsData.Add(cubeGDC4);
+                    //networking code
                     uint newint = 204376316;
                     SetGlobalObjectIdHash(cubeGDC4.associatedGameObject.GetComponent<NetworkObject>(), newint);
                     NetworkManager.Singleton.AddNetworkPrefab(cubeGDC4.associatedGameObject);
+                    //networking code
                 }
                 if (PodFarm.Value)
                 {
                     GroupDataConstructible cubeGDC6 = bundle.LoadAsset<GroupDataConstructible>("assets/RoofTopFarm.asset");
+                    if (___groupsData.Contains(cubeGDC6))
+                    {
+                        return;
+                    }
                     MaterialsHelper.ApplyGameMaterials(cubeGDC6.associatedGameObject);
                     ___groupsData.Add(cubeGDC6);
+                    //networking code
                     uint newint = 204376317;
                     SetGlobalObjectIdHash(cubeGDC6.associatedGameObject.GetComponent<NetworkObject>(), newint);
                     NetworkManager.Singleton.AddNetworkPrefab(cubeGDC6.associatedGameObject);
+                    //networking code
                 }
                 if (UndergroundPod.Value)
                 {
                     GroupDataConstructible cubeGDC7 = bundle.LoadAsset<GroupDataConstructible>("assets/SubTerrainianPod.asset");
+                    if (___groupsData.Contains(cubeGDC7))
+                    {
+                        return;
+                    }
                     MaterialsHelper.ApplyGameMaterials(cubeGDC7.associatedGameObject);
                     ___groupsData.Add(cubeGDC7);
+                    //networking code
                     uint newint = 204376318;
                     SetGlobalObjectIdHash(cubeGDC7.associatedGameObject.GetComponent<NetworkObject>(), newint);
                     NetworkManager.Singleton.AddNetworkPrefab(cubeGDC7.associatedGameObject);
+                    //networking code
                 }
                 if (SpiralStairs.Value)
                 {
                     GroupDataConstructible cubeGDC8 = bundle.LoadAsset<GroupDataConstructible>("assets/SpiralStairCase.asset");
+                    if (___groupsData.Contains(cubeGDC8))
+                    {
+                        return;
+                    }
                     MaterialsHelper.ApplyGameMaterials(cubeGDC8.associatedGameObject);
                     ___groupsData.Add(cubeGDC8);
+                    //networking code
                     uint newint = 204376319;
                     SetGlobalObjectIdHash(cubeGDC8.associatedGameObject.GetComponent<NetworkObject>(), newint);
                     NetworkManager.Singleton.AddNetworkPrefab(cubeGDC8.associatedGameObject);
+                    //networking code
                 }
                 if (FaucetFilled.Value)
                 {
                     GroupDataConstructible cubeGDC9 = bundle.LoadAsset<GroupDataConstructible>("assets/FaucetFilled.asset");
+                    if (___groupsData.Contains(cubeGDC9))
+                    {
+                        return;
+                    }
                     MaterialsHelper.ApplyGameMaterials(cubeGDC9.associatedGameObject);
                     ___groupsData.Add(cubeGDC9);
+                    //networking code
                     uint newint = 204376320;
                     SetGlobalObjectIdHash(cubeGDC9.associatedGameObject.GetComponent<NetworkObject>(), newint);
                     NetworkManager.Singleton.AddNetworkPrefab(cubeGDC9.associatedGameObject);
+                    //networking code
                 }
                 NetworkManager.Singleton.NetworkConfig.ForceSamePrefabs = true;
             }
@@ -354,17 +398,21 @@ namespace DirtBlocks
         {
             this.StartCoroutine(ExecuteLater(delegate () {
                 if (this.GetComponentInParent<ConstructibleGhost>() != null) return;
+                // Get WO Id
                 this.GetComponentInParent<WorldObjectAssociatedProxy>().GetWorldObjectDetails(delegate (WorldObject wo) {
                     WorldUniqueId wuid = this.gameObject.GetComponent<WorldUniqueId>();
                     SceneInterpolation si = this.gameObject.GetComponent<SceneInterpolation>();
+                    // Set WO Id on WorldUniqueId script
                     wuid.ChangeWorldObjectIdLive(wo.GetId());
                     ref int woid_SceneInterpolation = ref AccessTools.FieldRefAccess<SceneInterpolation, int>(si, "_woId");
+                    // unregister old woId of SceneInterpolation
                     SceneInterpolationHandler.Instance.UnRegisterInterpolator(woid_SceneInterpolation);
                     woid_SceneInterpolation = wo.GetId();
+                    // register new woId of SceneInterpolation (see: SceneInterpolation.Start)
                     SceneInterpolationHandler.Instance.RegisterInterpolator(
                         woid_SceneInterpolation,
                         AccessTools.FieldRefAccess<SceneInterpolation, float>(si, "_normalizedSpeed"),
-                        new Action<float, short>(delegate (float value, short direction) {
+                        new Action<float, short>(/*this.UpdateInterpolation*/delegate (float value, short direction) {
                             AccessTools.Method(typeof(SceneInterpolation), "UpdateInterpolation").Invoke(si, [value, direction]);
                         }));
                 });
