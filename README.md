@@ -142,6 +142,31 @@ Curtains:
 Equipment Rack
 - Shows up to 9 equip-able items
 
+# Corridors Extended
+Tested on:
+v2.203
+
+How to setup:
+
+After installing BepInEx and unzipping the file into your folder:
+- run the game.
+
+For additional options:
+- Find BepInEx\config\Tjatja.theplanetcraftermods.CorridorsExtended.cfg
+- Set the variables.
+
+Floating Header:
+- Sort of a wall, but without that nasty middle piece. (removes corners attached to it)
+
+Floating Header (L):
+- Sort of a wall, but without that nasty middle piece. (removes corners attached to its left side)
+- Note that this is seen as from the inside of a pod!
+
+Floating Header (R):
+- Sort of a wall, but without that nasty middle piece. (removes corners attached to its right side)
+- Note that this is seen as from the inside of a pod!
+
+
 # Special Thanks to
 @Akarnokd for the great code examples,
 @Nicki0 for helping me test and giving advice.
