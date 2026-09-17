@@ -551,34 +551,6 @@ public class CornerReplacer : MonoBehaviour
                 case "Pod (5)":
                 case "Pod (7)":
                 case "Pod (6)":
-                    /*
-                    Transform TA10 = __instance.transform.parent.parent.parent.Find("Common");
-                    foreach (Transform t in TA10)
-                    {
-                        if (type == 0 || type == 1)
-                        {
-
-                            if (t.name == wallName1)
-                            {
-                                t.gameObject.SetActive(false);
-                            }
-                        }
-                        if (type == 0 || type == 2)
-                        {
-                            if (t.name == wallName2)
-                            {
-                                t.gameObject.SetActive(false);
-                            }
-                        }
-                        if (type == 3)
-                        {
-                            if (t.name == wallName1 || t.name == wallName2)
-                            {
-                                t.gameObject.SetActive(true);
-                            }
-                        }
-
-                    }*/
                     break;
                 case "Pod (4)":
                     Transform TA12 = __instance.transform.parent.parent.parent.Find("Common");
@@ -765,19 +737,16 @@ public class Plugin : BaseUnityPlugin
             }
             cubeGDC.associatedGameObject.GetComponentInChildren<ConstraintSamePanel>().panelSubType = WallCorridor05SubPanelType;
             MaterialsHelper.ApplyGameMaterials(cubeGDC.associatedGameObject);
-            //cubeGDC.associatedGameObject.AddComponent<CornerReplacer>();
             ___groupsData.Add(cubeGDC);
 
             GroupDataConstructible cubeGDC1 = bundle.LoadAsset<GroupDataConstructible>("assets/Wall_Corridor_06L.asset");
             cubeGDC1.associatedGameObject.GetComponentInChildren<ConstraintSamePanel>().panelSubType = WallCorridor06LSubPanelType;
             MaterialsHelper.ApplyGameMaterials(cubeGDC1.associatedGameObject);
-            //cubeGDC1.associatedGameObject.AddComponent<CornerReplacer>();
             ___groupsData.Add(cubeGDC1);
 
             GroupDataConstructible cubeGDC2 = bundle.LoadAsset<GroupDataConstructible>("assets/Wall_Corridor_07R.asset");
             cubeGDC2.associatedGameObject.GetComponentInChildren<ConstraintSamePanel>().panelSubType = WallCorridor07RSubPanelType;
             MaterialsHelper.ApplyGameMaterials(cubeGDC2.associatedGameObject);
-            //cubeGDC2.associatedGameObject.AddComponent<CornerReplacer>();
             ___groupsData.Add(cubeGDC2);
 
             NetworkManager.Singleton.NetworkConfig.ForceSamePrefabs = true;
