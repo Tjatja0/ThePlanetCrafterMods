@@ -12,3 +12,5 @@ Tjatja.theplanetcraftermods.DecorBundle=1.0.3
 Tjatja.theplanetcraftermods.Carousel=1.0.2
 # Rocks
 Tjatja.theplanetcraftermods.Rocks=1.0.2
+# Testing Section
+Tjatja.theplanetcraftermods.AttachAPod=1.0.0
