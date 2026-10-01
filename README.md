@@ -167,6 +167,37 @@ Floating Header (R):
 - Note that this is seen as from the inside of a pod!
 
 
+# Expandable Pods
+
+Tested on:
+v2.203
+
+How to setup:
+
+After installing BepInEx and unzipping the file into your folder:
+- run the game.
+
+For additional options:
+- Find BepInEx\config\Tjatja.theplanetcraftermods.AttachAPod.cfg
+- Set the variables.
+
+Expandable Pod:
+- Expands into others of the same type
+- !Hold CTRL to deconstruct!
+
+Expandable Pod - Deck:
+- Expands into others of the same type
+- Always keeps the floor parts.
+- !Hold CTRL to deconstruct!
+
+Stairs for Expandable Pod:
+- Fits in between 2 Expandable Pod - Deck parts. (with a 1 pod difference)
+- Note: Both sides need to be made up of Expandable Pods or Deck Pods for this to fit exactly.
+
+Garage Door for Expandable Pod:
+- Allows you to enter/exit a building with the Rover.
+- Snaps to 4 pods, 2 on ground level, 2 above.
+
 # Special Thanks to
 @Akarnokd for the great code examples,
 @Nicki0 for helping me test and giving advice.
