@@ -625,15 +625,6 @@ public class AttachPodMerger : MonoBehaviour
                     float num1 = 12f; //z
                     float num2 = 12f; //x axis
                     float num3 = 5f; //y
-                    /*
-                    if (h.transform.gameObject.name.Contains("TriggerDeconstruction"))
-                    {
-                        if (h.transform.root.GetComponentInChildren<ConstructibleGhost>() == null)
-                        {
-                            Console.WriteLine($"Start : {target.transform.name}  x{target.transform.position.x},z{target.transform.position.z},y{target.transform.position.y} Garage : {h.transform.name} x{h.transform.position.x},z{h.transform.position.z},y{h.transform.position.y}");
-
-                        }
-                    }*/
                     switch (type)
                     {
                         case 0://top
@@ -646,7 +637,6 @@ public class AttachPodMerger : MonoBehaviour
                                 {
                                     if (h.transform.root.GetComponentInChildren<ConstructibleGhost>() == null)
                                     {
-                                        //Console.WriteLine($"Start : {target.transform.root.name}  x{target.transform.root.position.x},z{target.transform.root.position.z},y{target.transform.root.position.y} Garage : {h.transform.root.name} x{h.transform.root.position.x},z{h.transform.root.position.z},y{h.transform.root.position.y}");
                                         return true;
                                     }
                                 }
@@ -661,7 +651,6 @@ public class AttachPodMerger : MonoBehaviour
                                 {
                                     if (h.transform.root.GetComponentInChildren<ConstructibleGhost>() == null)
                                     {
-                                        //Console.WriteLine($"Start : {target.transform.root.name}  x{target.transform.root.position.x},z{target.transform.root.position.z},y{target.transform.root.position.y} Garage : {h.transform.root.name} x{h.transform.root.position.x},z{h.transform.root.position.z},y{h.transform.root.position.y}");
                                         return true;
                                     }
                                 }
@@ -676,7 +665,6 @@ public class AttachPodMerger : MonoBehaviour
                                 {
                                     if (h.transform.root.GetComponentInChildren<ConstructibleGhost>() == null)
                                     {
-                                        //Console.WriteLine($"Start : {target.transform.root.name}  x{target.transform.root.position.x},z{target.transform.root.position.z},y{target.transform.root.position.y} Garage : {h.transform.root.name} x{h.transform.root.position.x},z{h.transform.root.position.z},y{h.transform.root.position.y}");
                                         return true;
                                     }
                                 }
@@ -691,7 +679,6 @@ public class AttachPodMerger : MonoBehaviour
                                 {
                                     if (h.transform.root.GetComponentInChildren<ConstructibleGhost>() == null)
                                     {
-                                        //Console.WriteLine($"Start : {target.transform.root.name}  x{target.transform.root.position.x},z{target.transform.root.position.z},y{target.transform.root.position.y} Garage : {h.transform.root.name} x{h.transform.root.position.x},z{h.transform.root.position.z},y{h.transform.root.position.y}");
                                         return true;
                                     }
                                 }
@@ -901,13 +888,6 @@ public class AttachPodMerger : MonoBehaviour
             rootPod4.GetComponentInChildren<AttachPodMerger>().GarageDoorRight = DisableRight;
             rootPod4.GetComponentInChildren<AttachPodMerger>().GarageDoorLeft = DisableLeft;
         }
-
-        //Console.WriteLine($"GarageDoorLeft{GarageDoorLeft}");
-        //Console.WriteLine($"GarageDoorRight{GarageDoorRight}");
-        //Console.WriteLine($"GarageDoorTop{GarageDoorTop}");
-        //Console.WriteLine($"GarageDoorBot{GarageDoorBot}");
-        //roof corners
-
 
         if (rootPod10 != null && rootPod19 != null && rootPod22 != null)
         {
