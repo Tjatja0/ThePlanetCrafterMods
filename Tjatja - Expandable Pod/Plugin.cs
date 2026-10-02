@@ -65,7 +65,6 @@ public class AttachPodMerger : MonoBehaviour
     public Panel Wall_Window_RightP;
     public Panel RoofP;
     public Panel FloorP;
-    //corner pillars
     public GameObject BotRightLong;
     public GameObject BotLeftLong;
     public GameObject TopRightLong;
@@ -78,13 +77,10 @@ public class AttachPodMerger : MonoBehaviour
     public bool DisableBot;
     public bool DisableRight;
     public bool DisableLeft;
-    //roof elements
     public GameObject Roof;
     public GameObject Ceiling;
-    //floor elements
     public GameObject Floor;
     public BoxCollider SurfaceFloor;
-    //construction elements
     public GameObject LeftGirder;
     public GameObject RightGirder;
     public GameObject TopGirder;
@@ -250,9 +246,9 @@ public class AttachPodMerger : MonoBehaviour
 
     public void CheckSurroundingPods()
     {
-        float raycastDistance = 8.6f;//8.1f; 
-        float raycastDistanceR = 10.5f;//10f; 
-        float raycastDistanceT = 8.495f; //7.995f;
+        float raycastDistance = 8.6f;
+        float raycastDistanceR = 10.5f;
+        float raycastDistanceT = 8.495f;
         if (rootPod10 == null)
         {
             rootPod10 = GetContingousPods(rootPod13, raycastDistanceT, 0);
@@ -616,18 +612,16 @@ public class AttachPodMerger : MonoBehaviour
 
         foreach (RaycastHit h in Physics.RaycastAll(target.transform.position, direction, 20f))
         {
-            //Console.WriteLine($"base hit Garage door check: {h.transform.root.name}");
             if (h.transform.root.name == "AttachGaragePod(Clone)")
             {
-                //Console.WriteLine($"Succesfully hit AttachGaragePod(Clone) at {h.transform.root.position} own position at {target.transform.root.position}");
                 if (target.transform.root != h.transform.root)
                 {
-                    float num1 = 12f; //z
-                    float num2 = 12f; //x axis
-                    float num3 = 5f; //y
+                    float num1 = 12f;
+                    float num2 = 12f;
+                    float num3 = 5f;
                     switch (type)
                     {
-                        case 0://top
+                        case 0:
 
                             if (Math.Abs(target.transform.root.position.z - h.transform.root.position.z) < num1 &&
                                 Math.Abs(target.transform.root.position.x - h.transform.root.position.x) < num2 &&
@@ -642,7 +636,7 @@ public class AttachPodMerger : MonoBehaviour
                                 }
                             }
                             break;
-                        case 1://bot
+                        case 1:
                             if (Math.Abs(target.transform.root.position.z - h.transform.root.position.z) < num1 &&
                                 Math.Abs(target.transform.root.position.x - h.transform.root.position.x) < num2 &&
                                 Math.Abs(target.transform.root.position.y - h.transform.root.position.y) < num3)
@@ -656,7 +650,7 @@ public class AttachPodMerger : MonoBehaviour
                                 }
                             }
                             break;
-                        case 2://right
+                        case 2:
                             if (Math.Abs(target.transform.root.position.z - h.transform.root.position.z) < num1 &&
                                 Math.Abs(target.transform.root.position.x - h.transform.root.position.x) < num2 &&
                                 Math.Abs(target.transform.root.position.y - h.transform.root.position.y) < num3)
@@ -670,7 +664,7 @@ public class AttachPodMerger : MonoBehaviour
                                 }
                             }
                             break;
-                        case 3://left
+                        case 3:
                             if (Math.Abs(target.transform.root.position.z - h.transform.root.position.z) < num1 &&
                                 Math.Abs(target.transform.root.position.x - h.transform.root.position.x) < num2 &&
                                 Math.Abs(target.transform.root.position.y - h.transform.root.position.y) < num3)
@@ -738,7 +732,6 @@ public class AttachPodMerger : MonoBehaviour
                 break;
 
         }
-        //RaycastHit
         foreach (RaycastHit h in Physics.RaycastAll(target.transform.position, direction, 20f))
         {
             if (h.transform.root.name == "AttachPod(Clone)" || h.transform.root.name == "AttachFPod(Clone)")
@@ -1020,7 +1013,6 @@ public class AttachPodMerger : MonoBehaviour
 
         }
 
-        //floor corners
         if (rootPod10 != null && rootPod1 != null && rootPod4 != null)
         {
             if (CheckIfNotFloorPod(rootPod13))
@@ -1153,7 +1145,6 @@ public class AttachPodMerger : MonoBehaviour
                 rootPod4.GetComponentInChildren<AttachPodMerger>().BotGirder.gameObject.SetActive(!rootPod4.GetComponentInChildren<AttachPodMerger>().GarageDoorBot);
 
         }
-        //wall corners
         if (rootPod10 != null && rootPod14 != null && rootPod11 != null)
         {
             TopRightLong.SetActive(false);
@@ -1366,7 +1357,6 @@ public class AttachPodMerger : MonoBehaviour
                 rootPod15.GetComponentInChildren<AttachPodMerger>().TopRightLong.gameObject.SetActive(!rootPod15.GetComponentInChildren<AttachPodMerger>().GarageDoorTop && !rootPod15.GetComponentInChildren<AttachPodMerger>().GarageDoorRight);
 
         }
-        //panels
         if (rootPod10 != null)
         {
             Wall_Window_TopP.gameObject.SetActive(false);
