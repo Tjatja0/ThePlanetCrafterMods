@@ -28,12 +28,12 @@ namespace AttachAPod;
 
 public class AttachPodMerger : MonoBehaviour
 {
-    private GameObject rootPod0;//top
-    private GameObject rootPod1;//bot
-    private GameObject rootPod2;//right
-    private GameObject rootPod3;//left
-    private GameObject rootPod4;//roof
-    private GameObject rootPod5;//floor
+    private GameObject rootPod0;
+    private GameObject rootPod1;
+    private GameObject rootPod2;
+    private GameObject rootPod3;
+    private GameObject rootPod4;
+    private GameObject rootPod5;
     private GameObject rootPod6;
     private GameObject rootPod7;
     private GameObject rootPod8;
