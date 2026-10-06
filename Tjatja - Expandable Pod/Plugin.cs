@@ -1445,12 +1445,27 @@ public class AttachPodMerger : MonoBehaviour
             FloorP.gameObject.SetActive(true);
             SurfaceFloor.gameObject.SetActive(true);
         }
-        if (Managers.GetManager<PlayersManager>().GetActivePlayerController().GetPlayerInputDispatcher().IsPressingAccessibilityKey()){
-            TriggerDeconstruction.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+        if (Plugin.HotkeyIssues.Value)
+        {
+            if (Keyboard.current[Plugin.configKeyToHold.Value].isPressed || Keyboard.current[Plugin.configKeyToHold.Value].wasPressedThisFrame)
+            {
+                TriggerDeconstruction.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+            }
+            else if (!Keyboard.current[Plugin.configKeyToHold.Value].isPressed && !Keyboard.current[Plugin.configKeyToHold.Value].wasPressedThisFrame)
+            {
+                TriggerDeconstruction.gameObject.transform.localScale = new Vector3(0.0001f, 0.0001f, 0.0001f);
+            }
         }
         else
         {
-            TriggerDeconstruction.gameObject.transform.localScale = new Vector3(0.0001f, 0.0001f, 0.0001f);
+            if (Managers.GetManager<PlayersManager>().GetActivePlayerController().GetPlayerInputDispatcher().IsPressingAccessibilityKey())
+            {
+                TriggerDeconstruction.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+            }
+            else
+            {
+                TriggerDeconstruction.gameObject.transform.localScale = new Vector3(0.0001f, 0.0001f, 0.0001f);
+            }
         }
 
         foreach (Panel p in rootPod13.GetComponentsInChildren<Panel>())
@@ -1503,7 +1518,9 @@ public class AttachPodMerger : MonoBehaviour
 public class Plugin : BaseUnityPlugin
 {
     static ConfigEntry<bool> modEnabled;
+    public static ConfigEntry<bool> HotkeyIssues;
     static ConfigEntry<bool> Asset0;
+    public static ConfigEntry<Key> configKeyToHold;
     public static ConfigEntry<int> defaultWall;
     static ManualLogSource logger;
     static string currentLanguage;
@@ -1519,6 +1536,8 @@ public class Plugin : BaseUnityPlugin
         modEnabled = Config.Bind("General", "Enabled", true, "!Hold down Ctrl to access deconstruction!\n[Default is Enabled]");
         Asset0 = Config.Bind("General", "ExpandablePod", true, "[Add Expandable Pod]\n[Add Expandable Pod w/Floor]\n[Add Expandable Pod Stairs]");
         defaultWall = Config.Bind("General", "DefaultWall", 1, "[0 = Default Wall]\n[1 = Wall Glass]\n[2 = Biolab Wall]");
+        HotkeyIssues = Config.Bind("General", "Hotkeys_Overlap", false, "Enable this if other mods use/disable LeftCtrl.\n[Default is Disabled]");
+        configKeyToHold = Config.Bind("General", "Alternative_Hotkey", Key.LeftCtrl, "Pick the modifier key to use for deconstruction.\n!This only works if you enable the Hotkeys_Overlap setting!\n[Default is LeftCtrl]");
         logger = Logger;
         MaterialsHelper.InitMaterialsHelper(Logger);
         Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
