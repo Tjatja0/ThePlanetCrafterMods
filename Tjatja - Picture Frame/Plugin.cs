@@ -50,7 +50,6 @@ public class PictureHandler : Actionnable
             switch (t.name)
             {
                 case "ImagePicture":
-                    //Console.WriteLine("ImagePicture found");
                     ImagePicture = t.gameObject;
                     break;
 
@@ -72,7 +71,6 @@ public class PictureHandler : Actionnable
                 if (ImagePicture.transform.root.GetComponent<TextProxy>().GetText() != "" ||
                     ImagePicture.transform.root.GetComponent<TextProxy>().GetText() != null)
                 {
-                    //Console.WriteLine("init to : "+ImagePicture.transform.root.GetComponent<TextProxy>().GetText());
                     updateMaterial(ImagePicture.transform.root.GetComponent<TextProxy>().GetText());
                 }
             }
@@ -91,7 +89,6 @@ public class PictureHandler : Actionnable
         Texture2D newText = new Texture2D(2, 2);
         if (File.Exists(Path.GetDirectoryName(Plugin.customDirectory.Value) + "\\"+iconPath))
         {
-            //Console.WriteLine("fileExists");
             byte[] array = File.ReadAllBytes(Path.GetDirectoryName(Plugin.customDirectory.Value) + "\\" + iconPath);
             newText.LoadImage(array);
         }
@@ -100,7 +97,6 @@ public class PictureHandler : Actionnable
             iconPath = "defaultImage.png";
             if (File.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\" + iconPath))
             {
-                //Console.WriteLine("fileExists");
                 byte[] array = File.ReadAllBytes(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\" + iconPath);
                 newText.LoadImage(array);
             }
@@ -128,7 +124,6 @@ public class PictureHandler : Actionnable
             Actionnable._hudHandler.DisplayCursorText("UI_Use", 0f);
             curFrame++;
             if (curFrame > (AllTextures.Length-1)) { curFrame = 0; }
-            //Console.WriteLine(AllTextures[curFrame]);
             if (ImagePicture.transform.root.GetComponent<TextProxy>() != null)
             {
                 ImagePicture.transform.root.GetComponent<TextProxy>().SetText(new FileInfo(AllTextures[curFrame]).Name);
@@ -205,7 +200,6 @@ public class Plugin : BaseUnityPlugin
         if (Keyboard.current[keyToPress.Value].isPressed && Keyboard.current[keyToPress.Value].wasPressedThisFrame)
         {
             ScreenCapture.CaptureScreenshot(Path.GetDirectoryName(customDirectory.Value) + "\\"+ DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ".png");
-            //Console.WriteLine("Saved : " + Path.GetDirectoryName(customDirectory.Value) +"\\"+ DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ".png");
         }
     }
 
