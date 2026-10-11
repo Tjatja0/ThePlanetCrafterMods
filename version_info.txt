@@ -14,3 +14,5 @@ Tjatja.theplanetcraftermods.Carousel=1.0.2
 Tjatja.theplanetcraftermods.Rocks=1.0.2
 # Expandable Pods
 Tjatja.theplanetcraftermods.AttachAPod=1.0.2
+# Picture Frames
+Tjatja.theplanetcraftermods.PictureFrame=1.0.0
