@@ -198,6 +198,39 @@ Garage Door for Expandable Pod:
 - Allows you to enter/exit a building with the Rover.
 - Snaps to 4 pods, 2 on ground level, 2 above.
 
+# Picture Frames
+
+Tested on:
+v2.203
+
+How to setup:
+
+After installing BepInEx and unzipping the file into your folder:
+- run the game.
+
+For additional options:
+- Find BepInEx\config\Tjatja.theplanetcraftermods.PictureFrame.cfg
+- Set the variables.
+
+Capture Option:
+- Default hotkey PrintScreen
+- Saves a printscreen to the \images\ folder of this plugin.
+
+Picture Frame:
+- Shows Pictures from the Images folder inside of the plugin folder
+size: ~2000 px width 1400 px height
+
+XL Picture Frame:
+- Shows Pictures from the Images folder inside of the plugin folder
+size: ~4000 px width 2800 px height
+
+Small Picture Frame:
+- Shows Pictures from the Images folder inside of the plugin folder
+size: ~1000 px width 1400 px height
+
+Additional Option:
+- Throw your own custom images into the Images folder, just make sure you don't overdo it.
+
 # Special Thanks to
 @Akarnokd for the great code examples,
 @Nicki0 for helping me test and giving advice.
